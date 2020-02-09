@@ -17,7 +17,7 @@ function deleteToDo(event){
     toDoList.removeChild(li);
 
     const cleanToDos = toDos.filter(function(toDo){
-        return toDo.id !== pareInt(li.id);   //toDos가 'li'의 id와 같지 않을 때
+        return toDo.id !== parseInt(li.id);   //toDos가 'li'의 id와 같지 않을 때
     });
     toDos = cleanToDos;
     saveToDos();
