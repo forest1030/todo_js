@@ -6,6 +6,19 @@ const Todos_Ls =  "toDos"
 
 const toDos = []; //여러개를 리스트로 저장해야함으로 빈 array 생성
 
+function filterFn(toDo){    //forEach에서 function을 실행하는 것처럼 각각의 item
+    return toDo.id === 1
+}
+
+function deleteToDo(event){
+    const btn =event.target;
+    const li = btn.parentNode;
+
+    toDoList.removeChild(li);
+
+    const cleanToDos = toDos.filter(filterFn);
+    console.log(cleanToDos);
+}
 function saveToDos(){
     localStorage.setItem(Todos_Ls, JSON.stringify(toDos)) //localstorage는 string만 저장이 되어서 toDos를 string으로 변환시켜야 한다.
 }
@@ -17,6 +30,7 @@ function paintToDo(text){
     const span =document.createElement("span");
     const newId = toDos.length +1;
     delBtn.innerText = "❌";
+    delBtn.addEventListener("click",deleteToDo)
     span.innerText = text;
 
     li.appendChild(span);
